@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user, only: [:new, :create, :edit]
+  before_action :authenticate_user!, only: [:new, :create, :edit]
 
   def index
     @posts = Post.all
@@ -10,9 +10,10 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @user = current_user
+    @post = @user.posts.build(post_params)
 
-    if @post.save?
+    if @post.save
       flash[:notice] = 'Post created ;)'
       redirect_to @post
     else
