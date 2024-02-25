@@ -11,10 +11,19 @@
   </head>
 
   <body>
-
     <% flash.each do |name, msg| -%>
       <%= content_tag :div, msg, class: name %>
     <% end -%>
+    <div class='nav'>
+      <% if user_signed_in? %>
+        <p>You are currently logged in as: <%= current_user.email %></p>
+        <%= button_to 'Log-out', destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= button_to 'Sign-in', new_user_session_path %>
+      <% end %> <br>
+    </div>
+    <%= button_to 'Home', :root, method: :get%>
+
     <%= yield %>
   </body>
 </html>

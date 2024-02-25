@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+
+ .nav {
+  display: flex;
+  /* border: solid 2px black; */
+  align-items: center;
+  /* justify-content: center; */
+ }
+
+ button {
+  margin: 5px;
+ }

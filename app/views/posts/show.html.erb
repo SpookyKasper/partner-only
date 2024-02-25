@@ -1,5 +1,7 @@
 <h1><%= @post.title %></h1>
 
-
-<div>Author: <%= @post.user.email %></div>
+<p><%= @post.body %></p>
+<% if user_signed_in? %>
+  <div>Written by:<%= @post.user.email %></div>
+<% end %>
 
